@@ -1,0 +1,132 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Marisol</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: black;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: fixed;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      display: none;
+      animation: zoomBg 12s ease forwards;
+    }
+
+    @keyframes zoomBg {
+      from { transform: scale(1); }
+      to { transform: scale(1.15); }
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.35), rgba(0,0,0,0.75));
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 48px 26px;
+      text-align: center;
+    }
+
+    .text {
+      color: white;
+      font-size: 17px;
+      line-height: 1.9;
+      max-width: 92%;
+      font-family: 'Playfair Display', serif;
+      animation: textFade 2.2s ease;
+    }
+
+    em {
+      display: block;
+      margin-top: 16px;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    @keyframes textFade {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(to right, #ffffff, #dddddd);
+      width: 0;
+      animation: progress 8s linear forwards;
+    }
+
+    @keyframes progress {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slide" style="background-image:url('imagen1.jpeg')">
+  <div class="overlay"><div class="text">
+    Querida Marisol, bueno futura profesora xddd. El día de hoy no me olvidé de tu cumpleaños, más bien esperé a que sea un momento más lindo para poder enviarte esto.
+  </div></div>
+</div>
+
+<div class="slide" style="background-image:url('imagen2.jpeg')">
+  <div class="overlay"><div class="text">
+    Gracias por muchas cosas, por ayudarme en algunos momentos donde sufría ataques de ansiedad y varias cosas más. Me da gusto haber pasado este año contigo.
+  </div></div>
+</div>
+
+<div class="slide" style="background-image:url('imagen3.jpeg')">
+  <div class="overlay"><div class="text">
+    Tú te gradúas convirtiéndote en un alma mater y yo pisando una nueva etapa de fósil xddd. Nada más agradecerte también porque gracias a ti conocí a tu hermana, una linda chica de verdad xd.
+  </div></div>
+</div>
+
+<div class="slide" style="background-image:url('imagen4.jpeg')">
+  <div class="overlay"><div class="text">
+    Feliz cumpleaños, Marisol; aunque hoy me hice el tonto diciendo que me había olvidado, en realidad solo estaba esperando el momento perfecto para escribirte esto: gracias por todo lo que hiciste por mí este año, por ayudarme a aclarar mi futuro, por apoyarme incluso en momentos de ansiedad y por demostrar que más que una practicante fuiste una guía de verdad; ahora tú pasando a tu etapa de futura profesora y yo a mi nueva fase de fósil xddd, me alegra haber compartido este tiempo contigo.
+    <em>Feliz cumpleaños, Marisol, gracias por tu apoyo, tu paciencia y por marcar de forma tan bonita esta etapa de mi vida.</em>
+  </div></div>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  let index = 0;
+  const duration = 8000;
+
+  function showSlide() {
+    slides.forEach(s => s.style.display = 'none');
+    progress.style.animation = 'none';
+    progress.offsetHeight;
+    progress.style.animation = `progress ${duration}ms linear forwards`;
+    slides[index].style.display = 'block';
+    index = (index + 1) % slides.length;
+  }
+
+  showSlide();
+  setInterval(showSlide, duration);
+</script>
+
+</body>
+</html>
+```
